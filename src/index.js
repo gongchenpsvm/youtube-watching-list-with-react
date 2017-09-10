@@ -1,18 +1,35 @@
-import React from 'react';//React core works with making components
+import React, { Component } from 'react';//React core works with making components
 import ReactDOM from 'react-dom';//React dom shows the components
-
 import SearchBar from './components/search_bar';//own file needs a reference
+import YTSearch from 'youtube-api-search';
+import VideoList from './components/video_list';
 
 const API_KEY = 'AIzaSyC3Uoj6VbqnJrB1ZAajvzLiu3IgOKFfkHE';
+
 
 //Create new component, which produces some html
 //Take the generated html to page
 //Make and show
-const App = () => {
-  return <div>
-    <SearchBar />
-  </div>;
-};
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { videos: [ ]};
+
+    YTSearch({key: API_KEY, term: 'surfboards'}, (data) => {
+      this.setState({ videos: data });
+    });
+  }
+  
+  render(){
+    return (
+      <div>
+        <SearchBar />
+        <VideoList videos={this.state.videos} />
+      </div>
+    );
+  }
+}
 
 //This APP component is a class.
 // ReactDOM.render(App);
