@@ -1,11 +1,18 @@
 import React from 'react';//React core works with making components
 import ReactDOM from 'react-dom';//React dom shows the components
+
+import SearchBar from './components/search_bar';//own file needs a reference
+
+const API_KEY = 'AIzaSyC3Uoj6VbqnJrB1ZAajvzLiu3IgOKFfkHE';
+
 //Create new component, which produces some html
 //Take the generated html to page
 //Make and show
 const App = () => {
-  return <div>Hi!</div>;
-}
+  return <div>
+    <SearchBar />
+  </div>;
+};
 
 //This APP component is a class.
 // ReactDOM.render(App);
