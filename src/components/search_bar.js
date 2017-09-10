@@ -7,8 +7,19 @@ import React, {Component} from 'react';
 
 /*class component*/
 class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    //Initialize state
+    this.state = { term: '' };
+  }
   render() {
-    return <input />;
+    return <input onChange={this.onInputChange}/>;
+    //Input element with an event hadnler
+    //triggered whenever event "change" occurs
+  }
+
+  onInputChange(myCoolEvent) {//Event handler
+    console.log(myCoolEvent.target.value);
   }
 }
 
