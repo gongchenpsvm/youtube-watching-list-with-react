@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';//React dom shows the components
 import SearchBar from './components/search_bar';//own file needs a reference
 import YTSearch from 'youtube-api-search';
 import VideoList from './components/video_list';
-
+import VideoDetail from './components/video_detail';
 const API_KEY = 'AIzaSyC3Uoj6VbqnJrB1ZAajvzLiu3IgOKFfkHE';
 
 
@@ -16,15 +16,16 @@ class App extends Component {
 
     this.state = { videos: [ ]};
 
-    YTSearch({key: API_KEY, term: 'surfboards'}, (data) => {
+    YTSearch({key: API_KEY, term: 'dota2'}, (data) => {
       this.setState({ videos: data });
     });
   }
-  
+
   render(){
     return (
       <div>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]} />
         <VideoList videos={this.state.videos} />
       </div>
     );
